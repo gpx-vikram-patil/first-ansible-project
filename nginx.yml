@@ -16,8 +16,8 @@
       path: /usr/share/nginx/html/helloworld.info
       state: directory
       mode: '0775'
-      owner: "devops"
-      group: "devops"
+      owner: "root"
+      group: "root"
 
   - name: delete default nginx site
     file:

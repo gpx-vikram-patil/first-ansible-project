@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: web
   become: yes
   tasks:
   - name: "apt-get update"
@@ -13,11 +13,11 @@
 
   - name: "create www directory"
     file:
-      path: /usr/share/nginx/html/helloworld.info
+      path: /usr/share/nginx/html/{{ domain }}
       state: directory
       mode: '0775'
-      owner: "root"
-      group: "root"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
 
   - name: delete default nginx site
     file:

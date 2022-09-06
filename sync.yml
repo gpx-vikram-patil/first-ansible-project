@@ -1,9 +1,9 @@
-- hosts: web
+- hosts: all
   tasks:
   - name: "sync website"
     synchronize:
       src: site/
-      dest: /usr/share/nginx/html/{{ domain }}
+      dest: /usr/share/nginx/html/helloworld.info
       archive: no
       checksum: yes
       recursive: yes

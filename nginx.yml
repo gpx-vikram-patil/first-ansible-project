@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: Web
   become: yes
   tasks:
   - name: "apt-get update"

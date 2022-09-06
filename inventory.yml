@@ -1,0 +1,8 @@
+web:
+  hosts:
+    192.168.29.52
+  vars:
+    domain: helloworld.info
+    ansible_user: devops
+    ansible_ssh_private_key_file: ~/.ssh/devops.pem
+# ansible_sudo_pass: qwerty

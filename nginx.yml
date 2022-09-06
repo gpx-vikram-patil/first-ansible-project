@@ -13,11 +13,11 @@
 
   - name: "create www directory"
     file:
-      path: /usr/share/nginx/html/{{ domain }}
+      path: /usr/share/nginx/html/helloworld.info
       state: directory
       mode: '0775'
-      owner: "{{ ansible_user }}"
-      group: "{{ ansible_user }}"
+      owner: "devops"
+      group: "devops"
 
   - name: delete default nginx site
     file:

@@ -12,7 +12,7 @@
       owner: root
       group: root
 
-- name: backup jar file
+  - name: backup jar file
     template:
       src: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
       dest: /home/ubuntu/backups/$(date +%d%m%Y)/$(date +%d%m%Y_%H%M)
@@ -20,7 +20,7 @@
       group: root
       mode: '0777'
 
-- name: download jar file from jenkins
+  - name: download jar file from jenkins
     ansible.builtin.get_url:
       url: '{{ URL }}'
       dest: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar

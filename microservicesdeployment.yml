@@ -20,6 +20,7 @@
     ansible.builtin.copy:
       src: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
       dest: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
+      remote_src: yes
       owner: root
       group: root
       mode: '0777'

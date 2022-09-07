@@ -37,6 +37,7 @@
 
   - name: stop service on remote_machine
     script: /home/deployment/app/stop-apiservice.sh
+    remote_src: yes
 
   - name: Pause for 5 seconds for service to stop
     ansible.builtin.pause:
@@ -44,6 +45,7 @@
  
   - name: stop service on remote_machine
     script: /home/deployment/app/stop-apiservice.sh
+    remote_src: yes
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:
@@ -51,3 +53,4 @@
 
   - name: stop service on remote_machine
     shell: sh /home/deployment/app/status-payex.sh | grep apiservice
+    remote_src: yes

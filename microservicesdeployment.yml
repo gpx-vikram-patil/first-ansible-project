@@ -13,7 +13,7 @@
       group: root
 
   - name: backup jar file
-    template:
+    ansible.builtin.copy:
       src: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
       dest: /home/ubuntu/backups/$(date +%d%m%Y)/$(date +%d%m%Y_%H%M)
       owner: root

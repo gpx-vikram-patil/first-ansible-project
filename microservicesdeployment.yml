@@ -6,7 +6,7 @@
   
   - name: set the dirname variable
     ansible.builtin.set_fact:
-      dirname: {{ ansible_date_time.iso8601_basic_short }}
+      dirname: "{{ ansible_date_time.iso8601_basic_short }}"
   
   - name: "create backup directory"
     file:

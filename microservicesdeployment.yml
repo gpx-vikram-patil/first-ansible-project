@@ -4,9 +4,13 @@
   
   tasks:
   
+  - name: set the dirname variable
+    ansible.builtin.set_fact:
+      dirname: {{ ansible_date_time.iso8601_basic_short }}
+  
   - name: "create backup directory"
     file:
-      path: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ ansible_date_time.iso8601_basic_short }}
+      path: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
       state: directory
       mode: '0777'
       owner: root
@@ -15,7 +19,7 @@
   - name: backup jar file
     ansible.builtin.copy:
       src: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
-      dest: /home/ubuntu/backups/$(date +%d%m%Y)/$(date +%d%m%Y_%H%M)
+      dest: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
       owner: root
       group: root
       mode: '0777'

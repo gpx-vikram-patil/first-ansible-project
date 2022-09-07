@@ -14,16 +14,16 @@
 	  
   - name: backup jar file
     template:
-      src: /home/deployment/app/adminservice-1.0-SNAPSHOT.jar
+      src: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
       dest: /home/ubuntu/backups/$(date +%d%m%Y)/$(date +%d%m%Y_%H%M)
       owner: root
       group: root
       mode: '0777'
 
-  - name: download jar file from jenkins
+- name: download jar file from jenkins
     ansible.builtin.get_url:
       url: '{{ URL }}'
-      dest: /home/deployment/app/adminservice-1.0-SNAPSHOT.jar
+      dest: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
       username: abhishek.shahane
       password: '{{ mysecret }}'
       mode: '0775'
@@ -31,18 +31,18 @@
       group: '{{ devuser }}'
 
   - name: stop service on remote_machine
-      script: /home/deployment/app/stop-adminservice.sh
+      script: /home/deployment/app/stop-apiservice.sh
 
   - name: Pause for 5 seconds for service to stop
       ansible.builtin.pause:
       seconds: 5
  
   - name: stop service on remote_machine
-      script: /home/deployment/app/stop-adminservice.sh
+      script: /home/deployment/app/stop-apiservice.sh
  
   - name: Pause for 5 seconds for service to start
       ansible.builtin.pause:
       seconds: 5
 
   - name: stop service on remote_machine
-      shell: sh /home/deployment/app/status-payex.sh | grep adminservice
+      shell: sh /home/deployment/app/status-payex.sh | grep apiservice

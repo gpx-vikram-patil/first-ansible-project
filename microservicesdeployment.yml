@@ -31,18 +31,18 @@
       group: '{{ devuser }}'
 
   - name: stop service on remote_machine
-      script: /home/deployment/app/stop-apiservice.sh
+    script: /home/deployment/app/stop-apiservice.sh
 
   - name: Pause for 5 seconds for service to stop
-      ansible.builtin.pause:
+    ansible.builtin.pause:
       seconds: 5
  
   - name: stop service on remote_machine
-      script: /home/deployment/app/stop-apiservice.sh
+    script: /home/deployment/app/stop-apiservice.sh
  
   - name: Pause for 5 seconds for service to start
-      ansible.builtin.pause:
+    ansible.builtin.pause:
       seconds: 5
 
   - name: stop service on remote_machine
-      shell: sh /home/deployment/app/status-payex.sh | grep apiservice
+    shell: sh /home/deployment/app/status-payex.sh | grep apiservice

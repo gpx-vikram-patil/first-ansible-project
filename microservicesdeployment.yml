@@ -37,29 +37,20 @@
 
   - name: stop service
     remote_user: '{{ devuser }}'
-    sudo: no
-    tasks:
-     - name: Execute the script
-       command: sh /home/deployment/app/stop-apiservice.sh
+    command: sh /home/deployment/app/stop-apiservice.sh
        
   - name: Pause for 5 seconds for service to stop
     ansible.builtin.pause:
       seconds: 5
  
-   - name: start service
+  - name: start service
     remote_user: '{{ devuser }}'
-    sudo: no
-    tasks:
-     - name: Execute the script
-       command: sh /home/deployment/app/start-apiservice.sh
+    command: sh /home/deployment/app/start-apiservice.sh
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:
       seconds: 5
       
-  - name: check status of service
+  - name: check service script
     remote_user: '{{ devuser }}'
-    sudo: no
-    tasks:
-     - name: Execute the script
        command: sh /home/deployment/app/status-payex.sh | grep apiservice

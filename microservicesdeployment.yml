@@ -53,4 +53,4 @@
       
   - name: check service script
     remote_user: '{{ devuser }}'
-       command: sh /home/deployment/app/status-payex.sh | grep apiservice
+    command: sh /home/deployment/app/status-payex.sh | grep apiservice

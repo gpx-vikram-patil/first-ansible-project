@@ -10,7 +10,7 @@
   
   - name: "create backup directory"
     file:
-      path: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
+      path: /home/ubuntu/backup/{{ ansible_date_time.date }}/{{ dirname }}
       state: directory
       mode: '0777'
       owner: root
@@ -18,8 +18,8 @@
 
   - name: backup jar file
     ansible.builtin.copy:
-      src: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
-      dest: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
+      src: /home/deployment/app/jars/apiservice-1.0-SNAPSHOT.jar
+      dest: /home/ubuntu/backup/{{ ansible_date_time.date }}/{{ dirname }}
       remote_src: yes
       owner: root
       group: root
@@ -28,7 +28,7 @@
   - name: download jar file from jenkins
     ansible.builtin.get_url:
       url: '{{ URL }}'
-      dest: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
+      dest: /home/deployment/app/jars/apiservice-1.0-SNAPSHOT.jar
       force: yes
       username: vikram.patil
       password: '{{ mysecret }}'
@@ -38,7 +38,7 @@
 
   - name: stop service
     remote_user: '{{ devuser }}'
-    command: sh /home/deployment/app/stop-apiservice.sh
+    command: sh /home/deployment/app/start-stop/stop-apiservice.sh
     ignore_errors: yes
        
   - name: Pause for 5 seconds for service to stop
@@ -47,7 +47,7 @@
  
   - name: start service
     remote_user: '{{ devuser }}'
-    command: sh /home/deployment/app/start-apiservice.sh
+    command: sh /home/deployment/app/start-stop/start-apiservice.sh
     ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start

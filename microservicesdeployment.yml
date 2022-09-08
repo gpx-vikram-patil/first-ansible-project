@@ -28,7 +28,7 @@
   - name: download jar file from jenkins
     ansible.builtin.get_url:
       url: '{{ URL }}'
-      dest: /home/deployment/app/apiservice-2.0-SNAPSHOT.jar
+      dest: /home/deployment/app/apiservice-1.0-SNAPSHOT.jar
       username: vikram.patil
       password: '{{ mysecret }}'
       mode: '0775'

@@ -38,6 +38,7 @@
   - name: stop service
     remote_user: '{{ devuser }}'
     command: sh /home/deployment/app/stop-apiservice.sh
+    ignore_errors: yes
        
   - name: Pause for 5 seconds for service to stop
     ansible.builtin.pause:
@@ -46,6 +47,7 @@
   - name: start service
     remote_user: '{{ devuser }}'
     command: sh /home/deployment/app/start-apiservice.sh
+    ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:
@@ -54,3 +56,4 @@
   - name: check service script
     remote_user: '{{ devuser }}'
     command: sh /home/deployment/app/status-payex.sh | grep apiservice
+    ignore_errors: yes

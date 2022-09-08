@@ -47,7 +47,7 @@
  
   - name: start service
     #remote_user: '{{ devuser }}'
-    command: su techteam -c "sh /home/deployment/app/start-stop-zookeeper/start-apiservice.sh"
+    command: su techteam -c "sh /home/deployment/app/start-stop/start-apiservice.sh"
     ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start

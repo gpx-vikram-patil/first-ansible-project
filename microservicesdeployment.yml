@@ -35,22 +35,31 @@
       owner: '{{ devuser }}'
       group: '{{ devuser }}'
 
-  - name: stop service on remote_machine
-    script: /home/deployment/app/stop-apiservice.sh
-    remote_src: yes
-
+  - name: stop service
+    remote_user: '{{ devuser }}'
+    sudo: no
+    tasks:
+     - name: Execute the script
+       command: sh /home/deployment/app/stop-apiservice.sh
+       
   - name: Pause for 5 seconds for service to stop
     ansible.builtin.pause:
       seconds: 5
  
-  - name: stop service on remote_machine
-    script: /home/deployment/app/stop-apiservice.sh
-    remote_src: yes
+   - name: start service
+    remote_user: '{{ devuser }}'
+    sudo: no
+    tasks:
+     - name: Execute the script
+       command: sh /home/deployment/app/start-apiservice.sh
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:
       seconds: 5
-
-  - name: stop service on remote_machine
-    shell: sh /home/deployment/app/status-payex.sh | grep apiservice
-    remote_src: yes
+      
+  - name: check status of service
+    remote_user: '{{ devuser }}'
+    sudo: no
+    tasks:
+     - name: Execute the script
+       command: sh /home/deployment/app/status-payex.sh | grep apiservice

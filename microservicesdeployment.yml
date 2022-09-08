@@ -53,7 +53,7 @@
     ansible.builtin.pause:
       seconds: 5
       
-  - name: check service script
+  - name: check service status
     remote_user: '{{ devuser }}'
     command: sh /home/deployment/app/status-payex.sh | grep apiservice
     ignore_errors: yes

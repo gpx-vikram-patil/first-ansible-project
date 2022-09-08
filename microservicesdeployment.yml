@@ -37,7 +37,7 @@
       group: '{{ devuser }}'
 
   - name: stop service
-    remote_user: '{{ devuser }}'
+    #remote_user: '{{ devuser }}'
     command: sh /home/deployment/app/start-stop/stop-apiservice.sh
     ignore_errors: yes
        
@@ -46,8 +46,8 @@
       seconds: 5
  
   - name: start service
-    remote_user: '{{ devuser }}'
-    command: sh /home/deployment/app/start-stop/start-apiservice.sh
+    #remote_user: '{{ devuser }}'
+    command: su techteam -c "sh /home/deployment/app/start-stop-zookeeper/start-apiservice.sh"
     ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start
@@ -55,6 +55,6 @@
       seconds: 5
       
   - name: check service status
-    remote_user: '{{ devuser }}'
+    #remote_user: '{{ devuser }}'
     command: sh /home/deployment/app/status-payex.sh | grep apiservice
     ignore_errors: yes

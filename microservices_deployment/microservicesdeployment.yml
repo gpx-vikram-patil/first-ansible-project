@@ -30,8 +30,8 @@
       url: '{{ URL }}'
       dest: /home/deployment/app/jars/apiservice-1.0-SNAPSHOT.jar
       force: yes
-      username: vikram.patil
-      password: '{{ mysecret }}'
+      username: '{{ nexus_username }}'
+      password: '{{ nexus_password }}'
       mode: '0775'
       owner: '{{ devuser }}'
       group: '{{ devuser }}'

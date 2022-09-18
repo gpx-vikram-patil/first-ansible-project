@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+  - name: "sync website"
+    synchronize:
+      src: site/
+      dest: /usr/share/nginx/html/{{ free.pay }}
+      archive: no
+      checksum: yes
+      recursive: yes
+      delete: yes
+    become: no

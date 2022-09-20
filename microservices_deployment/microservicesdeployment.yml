@@ -98,7 +98,7 @@
     register: stopresult
     ignore_errors: yes
   
-  - name: display the output of script
+  - name: display the output of stop script
     debug: var=stopresult
   
   - name: Pause for 5 seconds for service to stop
@@ -119,7 +119,7 @@
     register: startresult
     ignore_errors: yes
    
-  - name: display the output of script
+  - name: display the output of start script
     debug: var=startresult
  
   - name: Pause for 5 seconds for service to start
@@ -131,5 +131,5 @@
     register: servicestatus
     ignore_errors: yes
     
-  - name: display the output of script
+  - name: display the output of status script
     debug: var=servicestatus

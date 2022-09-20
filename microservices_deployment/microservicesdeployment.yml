@@ -4,13 +4,53 @@
   
   tasks:
   
+  - name: Create a directory if it does not exist
+    file:
+      path: /home/deployment/app/jars
+      state: directory
+      owner: '{{ devuser }}'
+      group: '{{ devuser }}'
+      mode: '0755'
+   
+  - name: Create a directory if it does not exist
+    file:
+      path: /home/deployment/app/dump
+      state: directory
+      owner: '{{ devuser }}'
+      group: '{{ devuser }}'
+      mode: '0755'
+      
+  - name: Create a directory if it does not exist
+    file:
+      path: /home/deployment/app/payexLogs
+      state: directory
+      owner: '{{ devuser }}'
+      group: '{{ devuser }}'
+      mode: '0755'
+      
+  - name: Create a directory if it does not exist
+    file:
+      path: /home/deployment/app/output
+      state: directory
+      owner: '{{ devuser }}'
+      group: '{{ devuser }}'
+      mode: '0755'
+      
+  - name: Create a directory if it does not exist
+    file:
+      path: /home/deployment/app/configs
+      state: directory
+      owner: '{{ devuser }}'
+      group: '{{ devuser }}'
+      mode: '0755'
+      
   - name: set the dirname variable
     ansible.builtin.set_fact:
       dirname: "{{ ansible_date_time.iso8601_basic_short }}"
   
   - name: "create backup directory"
     file:
-      path: /home/ubuntu/backup/{{ ansible_date_time.date }}/{{ dirname }}
+      path: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
       state: directory
       mode: '0777'
       owner: root
@@ -18,7 +58,7 @@
 
   - name: backup jar file
     ansible.builtin.copy:
-      src: /home/deployment/app/jars/apiservice-1.0-SNAPSHOT.jar
+      src: /home/deployment/app/jars/{{ service_name }}-1.0-SNAPSHOT.jar
       dest: /home/ubuntu/backup/{{ ansible_date_time.date }}/{{ dirname }}
       remote_src: yes
       owner: root
@@ -28,7 +68,7 @@
   - name: download jar file from jenkins
     ansible.builtin.get_url:
       url: '{{ URL }}'
-      dest: /home/deployment/app/jars/apiservice-1.0-SNAPSHOT.jar
+      dest: /home/deployment/app/jars/{{ service_name }}-1.0-SNAPSHOT.jar
       force: yes
       username: '{{ nexus_username }}'
       password: '{{ nexus_password }}'
@@ -36,9 +76,11 @@
       owner: '{{ devuser }}'
       group: '{{ devuser }}'
 
+#Run script using script module and get the output from awx console
+
   - name: stop service
     #remote_user: '{{ devuser }}'
-    command: sh /home/deployment/app/start-stop/stop-apiservice.sh
+    command: sh /home/deployment/app/stop-{{ service_name }}.sh
     ignore_errors: yes
        
   - name: Pause for 5 seconds for service to stop
@@ -47,7 +89,7 @@
  
   - name: start service
     #remote_user: '{{ devuser }}'
-    command: su techteam -c "sh /home/deployment/app/start-stop/start-apiservice.sh"
+    command: su techteam -c "sh /home/deployment/app/start-stop/start-{{ service_name }}.sh"
     ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start

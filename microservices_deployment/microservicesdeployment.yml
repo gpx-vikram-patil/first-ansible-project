@@ -92,7 +92,7 @@
     #remote_user: '{{ dev_user }}'
     #become_user: root
     #tasks:
-    script: scripts/start-apiservice.sh
+    script: /home/vikram/scripts/start-apiservice.sh
     register: results
     debug:
       var: results.stdout

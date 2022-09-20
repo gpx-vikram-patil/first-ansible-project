@@ -4,7 +4,7 @@
   
   tasks:
   
-  - name: Create a directory if it does not exist
+  - name: create 'scripts' directory if it does not exist
     file:
       path: /home/deployment/app/scripts
       state: directory
@@ -12,7 +12,7 @@
       group: '{{ devuser }}'
       mode: '0755'
       
-  - name: Create a directory if it does not exist
+  - name: create 'jars' directory if it does not exist
     file:
       path: /home/deployment/app/jars
       state: directory
@@ -20,7 +20,7 @@
       group: '{{ devuser }}'
       mode: '0755'
    
-  - name: Create a directory if it does not exist
+  - name: create 'dump' directory if it does not exist
     file:
       path: /home/deployment/app/dump
       state: directory
@@ -28,7 +28,7 @@
       group: '{{ devuser }}'
       mode: '0755'
       
-  - name: Create a directory if it does not exist
+  - name: create 'payexLogs' directory if it does not exist
     file:
       path: /home/deployment/app/payexLogs
       state: directory
@@ -36,7 +36,7 @@
       group: '{{ devuser }}'
       mode: '0755'
       
-  - name: Create a directory if it does not exist
+  - name: create 'output' directory if it does not exist
     file:
       path: /home/deployment/app/output
       state: directory
@@ -44,7 +44,7 @@
       group: '{{ devuser }}'
       mode: '0755'
       
-  - name: Create a directory if it does not exist
+  - name: create 'configs' directory if it does not exist
     file:
       path: /home/deployment/app/configs
       state: directory
@@ -64,7 +64,7 @@
       owner: root
       group: root
 
-  - name: backup jar file
+  - name: backup microservice jar file
     ansible.builtin.copy:
       src: /home/deployment/app/jars/{{ service_name }}-1.0-SNAPSHOT.jar
       dest: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
@@ -73,7 +73,7 @@
       group: root
       mode: '0777'
 
-  - name: download jar file from jenkins
+  - name: download microservice jar file from nexus
     ansible.builtin.get_url:
       url: '{{ URL }}'
       dest: /home/deployment/app/jars/{{ service_name }}-1.0-SNAPSHOT.jar
@@ -86,11 +86,23 @@
 
 #Run script using script module and get the output from awx console
 
-  - name: stop service
-    #remote_user: '{{ devuser }}'
-    command: sh /home/deployment/app/stop-{{ service_name }}.sh
+  - name: transfer the stop script
+    copy:
+      src: stop-{{ service_name }}.sh
+      dest: /home/deployment/app/scripts
+      force: yes
+      owner: '{{ devuser }}'
+      group: '{{ devuser }}'
+      mode: '0775'
+   
+  - name: execute a stop script
+    command: su techteam -c "sh  /home/deployment/app/scripts/stop-{{ service_name }}.sh"
+    register: stopresult
     ignore_errors: yes
-       
+  
+  - name: display the output of script
+    debug: var=stopresult
+  
   - name: Pause for 5 seconds for service to stop
     ansible.builtin.pause:
       seconds: 5
@@ -106,19 +118,20 @@
       
   - name: execute a start script
     command: su techteam -c "sh  /home/deployment/app/scripts/start-{{ service_name }}.sh"
-    register: result
+    register: startresult
     ignore_errors: yes
    
   - name: display the output of script
-    debug: var=result
-    #debug:
-    #  msg: "{{ result.stdout }}"
+    debug: var=startresult
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:
       seconds: 5
       
   - name: check service status
-    #remote_user: '{{ devuser }}'
-    command: sh /home/deployment/app/status-payex.sh | grep {{ service_name }}
+    command: ps -ef | grep {{ service_name }}
+    register: servicestatus
     ignore_errors: yes
+    
+  - name: display the output of script
+    debug: var=servicestatus

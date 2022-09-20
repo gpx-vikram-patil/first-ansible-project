@@ -109,8 +109,9 @@
     ignore_errors: yes
    
   - name: display the output of script
-    debug:
-      msg: "{{ result.stdout }}"
+    debug: var=result
+    #debug:
+    #  msg: "{{ result.stdout }}"
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:

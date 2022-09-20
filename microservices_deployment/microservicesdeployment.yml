@@ -108,8 +108,8 @@
     #remote_user: '{{ dev_user }}'
     #become_user: root
     #tasks:
-    remote_src: yes
     script: /home/deployment/app/scripts/start-{{ service-name }}.sh
+      remote_src: true
     register: result
     ignore_errors: yes
    

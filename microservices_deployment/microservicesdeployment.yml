@@ -88,15 +88,15 @@
       seconds: 5
  
   - name: Transfer and execute a script.
-  #hosts: all
+    #hosts: all
     #remote_user: '{{ dev_user }}'
     #become_user: root
-    tasks:
-    - script: scripts/start-apiservice.sh
-      register: results
-    - debug:
-        var: results.stdout
-    - ignore_errors: yes
+    #tasks:
+    script: scripts/start-apiservice.sh
+    register: results
+    debug:
+      var: results.stdout
+    ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:

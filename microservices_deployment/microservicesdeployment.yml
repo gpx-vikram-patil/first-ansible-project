@@ -104,12 +104,8 @@
       mode: '0775'
       
   - name: execute a start script
-    #hosts: all
-    #remote_user: '{{ dev_user }}'
-    #become_user: root
-    #tasks:
     script: /home/deployment/app/scripts/start-{{ service-name }}.sh
-      remote_src: true
+    remote_src: true
     register: result
     ignore_errors: yes
    

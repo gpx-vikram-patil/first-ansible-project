@@ -87,10 +87,16 @@
     ansible.builtin.pause:
       seconds: 5
  
-  - name: start service
-    #remote_user: '{{ devuser }}'
-    command: su techteam -c "sh /home/deployment/app/start-stop/start-{{ service_name }}.sh"
-    ignore_errors: yes
+  - name: Transfer and execute a script.
+  #hosts: all
+    remote_user: '{{ dev_user }}'
+  #become_user: root
+    tasks:
+    - script: scripts/start-apiservice.sh
+      register: results
+    - debug:
+        var: results.stdout
+    - ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:
@@ -98,5 +104,5 @@
       
   - name: check service status
     #remote_user: '{{ devuser }}'
-    command: sh /home/deployment/app/status-payex.sh | grep apiservice
+    command: sh /home/deployment/app/status-payex.sh | grep {{ service_name }}
     ignore_errors: yes

@@ -6,6 +6,14 @@
   
   - name: Create a directory if it does not exist
     file:
+      path: /home/deployment/app/scripts
+      state: directory
+      owner: '{{ devuser }}'
+      group: '{{ devuser }}'
+      mode: '0755'
+      
+  - name: Create a directory if it does not exist
+    file:
       path: /home/deployment/app/jars
       state: directory
       owner: '{{ devuser }}'
@@ -92,6 +100,7 @@
     #remote_user: '{{ dev_user }}'
     #become_user: root
     #tasks:
+    template:
     script: /home/vikram/scripts/start-apiservice.sh
     register: result
     ignore_errors: yes

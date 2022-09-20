@@ -96,7 +96,7 @@
       seconds: 5
  
   - name: transfer the start script
-    template:
+    copy:
       src: start-{{ service-name }}.sh
       dest: /home/deployment/app/scripts
       owner: '{{ dev_user }}'

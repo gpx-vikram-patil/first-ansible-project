@@ -104,8 +104,7 @@
       mode: '0775'
       
   - name: execute a start script
-    script: /home/deployment/app/scripts/start-{{ service-name }}.sh
-    remote_src: true
+    command: su techteam -c "sh  /home/deployment/app/scripts/start-{{ service-name }}.sh"
     register: result
     ignore_errors: yes
    

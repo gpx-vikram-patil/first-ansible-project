@@ -97,14 +97,14 @@
  
   - name: transfer the start script
     copy:
-      src: start-{{ service-name }}.sh
+      src: start-{{ service_name }}.sh
       dest: /home/deployment/app/scripts
       owner: '{{ dev_user }}'
       group: '{{ dev_user }}'
       mode: '0775'
       
   - name: execute a start script
-    command: su techteam -c "sh  /home/deployment/app/scripts/start-{{ service-name }}.sh"
+    command: su techteam -c "sh  /home/deployment/app/scripts/start-{{ service_name }}.sh"
     register: result
     ignore_errors: yes
    

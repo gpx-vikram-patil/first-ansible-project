@@ -59,7 +59,7 @@
   - name: backup jar file
     ansible.builtin.copy:
       src: /home/deployment/app/jars/{{ service_name }}-1.0-SNAPSHOT.jar
-      dest: /home/ubuntu/backup/{{ ansible_date_time.date }}/{{ dirname }}
+      dest: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
       remote_src: yes
       owner: root
       group: root

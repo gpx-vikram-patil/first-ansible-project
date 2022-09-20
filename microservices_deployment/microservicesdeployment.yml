@@ -84,8 +84,6 @@
       owner: '{{ devuser }}'
       group: '{{ devuser }}'
 
-#Run script using script module and get the output from awx console
-
   - name: transfer the stop script
     copy:
       src: stop-{{ service_name }}.sh

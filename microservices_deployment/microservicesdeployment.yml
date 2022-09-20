@@ -89,8 +89,8 @@
  
   - name: Transfer and execute a script.
   #hosts: all
-    remote_user: '{{ dev_user }}'
-  #become_user: root
+    #remote_user: '{{ dev_user }}'
+    #become_user: root
     tasks:
     - script: scripts/start-apiservice.sh
       register: results

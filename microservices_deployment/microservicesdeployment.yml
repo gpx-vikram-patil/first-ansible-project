@@ -93,12 +93,12 @@
     #become_user: root
     #tasks:
     script: /home/vikram/scripts/start-apiservice.sh
-    register: results
+    register: result
     ignore_errors: yes
    
   - name: display the output of script
     debug:
-      var: results.stdout
+      msg: "{{ result.stdout }}"
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:

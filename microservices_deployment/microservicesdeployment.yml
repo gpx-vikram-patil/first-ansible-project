@@ -48,7 +48,7 @@
     ansible.builtin.set_fact:
       dirname: "{{ ansible_date_time.iso8601_basic_short }}"
   
-  - name: "create backup directory"
+  - name: create backup directory
     file:
       path: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
       state: directory
@@ -87,16 +87,18 @@
     ansible.builtin.pause:
       seconds: 5
  
-  - name: Transfer and execute a script.
+  - name: transfer and execute a script.
     #hosts: all
     #remote_user: '{{ dev_user }}'
     #become_user: root
     #tasks:
     script: /home/vikram/scripts/start-apiservice.sh
     register: results
+    ignore_errors: yes
+   
+  - name: display the output of script
     debug:
       var: results.stdout
-    ignore_errors: yes
  
   - name: Pause for 5 seconds for service to start
     ansible.builtin.pause:

@@ -127,7 +127,7 @@
       seconds: 5
       
   - name: check service status
-    command: "ps -ef | grep {{ service_name }}"
+    shell: "ps -ef | grep {{ service_name }}"
     register: servicestatus
     ignore_errors: yes
     

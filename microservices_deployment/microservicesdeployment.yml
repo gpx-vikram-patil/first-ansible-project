@@ -85,18 +85,20 @@
       group: '{{ devuser }}'
 
   - name: transfer the stop script
-    copy:
+    script:
+      become_user: '{{ devuser }}'
       src: stop-{{ service_name }}.sh
-      dest: /home/deployment/app/scripts
-      force: yes
-      owner: '{{ devuser }}'
-      group: '{{ devuser }}'
-      mode: '0775'
+      #dest: /home/deployment/app/scripts
+      #force: yes
+      #owner: '{{ devuser }}'
+      #group: '{{ devuser }}'
+      #mode: '0775'
+      register: stopresult
    
-  - name: execute a stop script
-    command: su techteam -c "sh  /home/deployment/app/scripts/stop-{{ service_name }}.sh"
-    register: stopresult
-    ignore_errors: yes
+  #- name: execute a stop script
+  #  command: su techteam -c "sh  /home/deployment/app/scripts/stop-{{ service_name }}.sh"
+  #  register: stopresult
+  #  ignore_errors: yes
   
   - name: display the output of stop script
     debug: var=stopresult
@@ -106,18 +108,21 @@
       seconds: 5
  
   - name: transfer the start script
-    copy:
+    script:
+      become_user: '{{ devuser }}'
       src: start-{{ service_name }}.sh
-      dest: /home/deployment/app/scripts
-      force: yes
-      owner: '{{ devuser }}'
-      group: '{{ devuser }}'
-      mode: '0775'
+      #dest: /home/deployment/app/scripts
+      #force: yes
+      #owner: '{{ devuser }}'
+      #group: '{{ devuser }}'
+      #mode: '0775'
+      register: startresult
+      ignore_errors: yes
       
-  - name: execute a start script
-    command: su techteam -c "sh  /home/deployment/app/scripts/start-{{ service_name }}.sh"
-    register: startresult
-    ignore_errors: yes
+  #- name: execute a start script
+  #  command: su techteam -c "sh  /home/deployment/app/scripts/start-{{ service_name }}.sh"
+  #  register: startresult
+  #  ignore_errors: yes
    
   - name: display the output of start script
     debug: var=startresult

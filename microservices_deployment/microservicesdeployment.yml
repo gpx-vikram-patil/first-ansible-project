@@ -4,7 +4,7 @@
   
   tasks:
 
-  - name: create directories if they do not exist
+  - name: create directories if they doesn't exist
     file: path=/home/deployment/app/{{item}} state=directory
     with_items:
       - jars

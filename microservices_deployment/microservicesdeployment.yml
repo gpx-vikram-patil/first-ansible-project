@@ -5,17 +5,20 @@
   tasks:
 
   - name: create directories if they doesn't exist
-    file: path=/home/deployment/app/{{item}} state=directory
+    file: 
+      path: /home/deployment/app/{{item}}
+      state: directory
       owner: '{{ devuser }}'
       group: '{{ devuser }}'
       mode: '0755'
-    with_items:
+    loop:
       - jars
       - configs
       - scripts
       - output
       - payexLogs
       - dump
+
      
   - name: set the 'dirname' variable for backup directory
     set_fact:

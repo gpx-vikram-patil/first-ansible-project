@@ -85,9 +85,9 @@
       group: '{{ devuser }}'
 
   - name: transfer the stop script
-    script:
+    script: stop-{{ service_name }}.sh
       become_user: '{{ devuser }}'
-      src: stop-{{ service_name }}.sh
+      #src: stop-{{ service_name }}.sh
       #dest: /home/deployment/app/scripts
       #force: yes
       #owner: '{{ devuser }}'
@@ -108,9 +108,9 @@
       seconds: 5
  
   - name: transfer the start script
-    script:
+    script: start-{{ service_name }}.sh
       become_user: '{{ devuser }}'
-      src: start-{{ service_name }}.sh
+      #rc: start-{{ service_name }}.sh
       #dest: /home/deployment/app/scripts
       #force: yes
       #owner: '{{ devuser }}'

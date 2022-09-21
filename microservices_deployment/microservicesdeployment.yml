@@ -93,7 +93,7 @@
       #owner: '{{ devuser }}'
       #group: '{{ devuser }}'
       #mode: '0775'
-      register: stopresult
+    register: stopresult
    
   #- name: execute a stop script
   #  command: su techteam -c "sh  /home/deployment/app/scripts/stop-{{ service_name }}.sh"
@@ -116,8 +116,8 @@
       #owner: '{{ devuser }}'
       #group: '{{ devuser }}'
       #mode: '0775'
-      register: startresult
-      ignore_errors: yes
+    register: startresult
+    ignore_errors: yes
       
   #- name: execute a start script
   #  command: su techteam -c "sh  /home/deployment/app/scripts/start-{{ service_name }}.sh"

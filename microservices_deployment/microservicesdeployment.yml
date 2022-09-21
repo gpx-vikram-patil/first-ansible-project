@@ -86,7 +86,7 @@
 
   - name: transfer the stop script
     script: stop-{{ service_name }}.sh
-      become_user: '{{ devuser }}'
+      #become_user: {{ devuser }}
       #src: stop-{{ service_name }}.sh
       #dest: /home/deployment/app/scripts
       #force: yes
@@ -109,7 +109,7 @@
  
   - name: transfer the start script
     script: start-{{ service_name }}.sh
-      become_user: '{{ devuser }}'
+      become_user: {{ devuser }}
       #rc: start-{{ service_name }}.sh
       #dest: /home/deployment/app/scripts
       #force: yes

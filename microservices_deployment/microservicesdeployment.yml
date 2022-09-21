@@ -18,7 +18,6 @@
       - output
       - payexLogs
       - dump
-
      
   - name: set the 'dirname' variable for backup directory
     set_fact:

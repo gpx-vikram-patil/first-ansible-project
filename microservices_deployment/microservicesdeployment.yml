@@ -14,8 +14,8 @@
       - payexLogs
       - dump
       
-  - name: set the dirname variable for backup directory
-    ansible.builtin.set_fact:
+  - name: set the 'dirname' variable for backup directory
+    set_fact:
       dirname: "{{ ansible_date_time.iso8601_basic_short }}"
   
   - name: create backup directory
@@ -27,7 +27,7 @@
       group: root
 
   - name: backup microservice jar file to backup directory
-    ansible.builtin.copy:
+    copy:
       src: /home/deployment/app/jars/{{ service_name }}-1.0-SNAPSHOT.jar
       dest: /home/ubuntu/backups/{{ ansible_date_time.date }}/{{ dirname }}
       remote_src: yes
@@ -36,7 +36,7 @@
       mode: '0777'
 
   - name: download microservice jar file from nexus
-    ansible.builtin.get_url:
+    get_url:
       url: '{{ URL }}'
       dest: /home/deployment/app/jars/{{ service_name }}-1.0-SNAPSHOT.jar
       force: yes
@@ -55,7 +55,7 @@
     debug: var=stopresult
   
   - name: Pause for 5 seconds for service to stop
-    ansible.builtin.pause:
+    pause:
       seconds: 5
  
   - name: transfer and run the start-service script
@@ -68,7 +68,7 @@
     debug: var=startresult
  
   - name: Pause for 5 seconds for service to start
-    ansible.builtin.pause:
+    pause:
       seconds: 5
       
   - name: check service status

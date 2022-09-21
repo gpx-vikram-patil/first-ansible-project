@@ -94,6 +94,7 @@
       #group: '{{ devuser }}'
       #mode: '0775'
     register: stopresult
+    ignore_errors: yes
    
   #- name: execute a stop script
   #  command: su techteam -c "sh  /home/deployment/app/scripts/stop-{{ service_name }}.sh"

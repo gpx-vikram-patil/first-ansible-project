@@ -52,7 +52,7 @@
       group: '{{ devuser }}'
 
   - name: transfer and run the stop-service script
-    script: stop-{{ service_name }}.sh
+    script: stop_scripts/stop-{{ service_name }}.sh
     register: stopresult
     ignore_errors: yes
    
@@ -64,7 +64,7 @@
       seconds: 5
  
   - name: transfer and run the start-service script
-    script: start-{{ service_name }}.sh
+    script: start_scripts/start-{{ service_name }}.sh
     become_user: "{{ devuser }}"
     register: startresult
     ignore_errors: yes

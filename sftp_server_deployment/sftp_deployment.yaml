@@ -12,10 +12,9 @@
         - directory_only_for_peter1
         - directory_only_for_peter2
       - name: sally
-        password: ""
-        authorized: [sally.pub]
+        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/"
+        shell: False
         home: /var/tmp/sally
-        append: True
     - sftp_directories:
       - imports
       - exports

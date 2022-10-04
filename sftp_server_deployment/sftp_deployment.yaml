@@ -6,18 +6,18 @@
   vars:
     - sftp_users:
       - name: peter
-        password: "freepay" # passpass
+        password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0" # passpass
         shell: False
         sftp_directories:
         - directory_only_for_peter1
         - directory_only_for_peter2
       - name: sally
-        password: "freepay"
+        password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0"
         shell: False
         home: /var/tmp/sally
     - sftp_directories:
-      - imports
-      - exports
+      - OUTBOUND
+      - INBOUND
       - { name: public, mode: 755 }
       - other
   roles:

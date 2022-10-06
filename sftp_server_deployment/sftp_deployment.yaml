@@ -5,12 +5,13 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: repeater
+      - name: repeater2
         password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0" # passpass
         shell: False
         sftp_directories:
         - directory_only_for_peter1
         - directory_only_for_peter2
+        home: /SFTP/File_Server_Drive/ALGORIQ
       - name: sally
         password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0"
         shell: False

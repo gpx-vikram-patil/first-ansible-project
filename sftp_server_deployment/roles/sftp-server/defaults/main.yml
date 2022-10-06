@@ -1,9 +1,8 @@
 ---
-sftp_home_partition: /home
+sftp_home_partition: /SFTP/File_Server_Drive/ALGORIQ
 sftp_group_name: sftpusers
 sftp_directories: []
 sftp_start_directory: ''
 sftp_allow_passwords: True
-sftp_enable_selinux_support: False
 sftp_enable_logging: False
 sftp_nologin_shell: /sbin/nologin

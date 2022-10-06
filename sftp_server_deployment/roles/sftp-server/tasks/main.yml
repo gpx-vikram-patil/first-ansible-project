@@ -122,7 +122,7 @@
     - flags:
       skip_missing: True
       
-- acl: name=/SFTP/File_Server_Drive/ALGORIQ/repeater entity={{item}} etype=user permissions=rwx default=yes state=present
+- acl: name=/SFTP/File_Server_Drive/ALGORIQ/repeater entity={{item}} etype=user permissions=rwx recursive=yes default=yes state=present
   with_items: 
     - repeater2
     #- root

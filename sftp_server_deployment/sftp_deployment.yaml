@@ -5,7 +5,7 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: peter
+      - name: repeater
         password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0" # passpass
         shell: False
         sftp_directories:

@@ -5,21 +5,11 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: user1
+      - name: user4
         password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0" # passpass
         shell: False
-        sftp_directories:
-        - directory_only_for_user1
-      - name: user2
-        password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0" # passpass
-        shell: False
-        sftp_directories:
-        - directory_only_for_user2
-      - name: user3
-        password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0" # passpass
-        shell: False
-        sftp_directories:
-        - directory_only_for_user3
+        #sftp_directories:
+        #- directory_only_for_user1
         #- directory_only_for_peter2
         #home: /SFTP/File_Server_Drive/ALGORIQ
       #- name: sally

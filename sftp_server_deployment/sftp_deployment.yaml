@@ -9,7 +9,7 @@
         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
         sftp_directories:
-        - { name: OUTBOUND, mode: 775 }
+        #- { name: OUTBOUND, mode: 775 }
         - { name: OUTBOUND/ERROR/SUCCESS, mode: 775 }
         - { name: INBOUND, mode: 775 }
         - { name: INBOUND/ERROR, mode: 775 }

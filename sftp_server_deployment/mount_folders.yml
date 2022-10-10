@@ -1,0 +1,21 @@
+# Execution
+# ansible-playbook mount.yml
+
+- name: Test mount and unmounts
+  hosts: all
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: Mount
+    mount:
+        path: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER/CONTINENTAL_SFTP
+        src: /SFTP/File_Server_Drive/ALGORIQ/CONTINENTAL_SFTP
+        opts: bind
+        fstype: none
+        state: mounted
+
+  #- name: Unmount
+  #  mount:
+  #      path: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER/CONTINENTAL_SFTP
+  #      state: absent

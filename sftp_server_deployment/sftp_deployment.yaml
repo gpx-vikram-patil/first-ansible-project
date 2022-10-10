@@ -1,5 +1,5 @@
 ---
-- name: test-playbook | Test sftp-server role
+- name: test-playbook | Test sftp-server roles
   hosts: all
   become: yes
   become_user: root

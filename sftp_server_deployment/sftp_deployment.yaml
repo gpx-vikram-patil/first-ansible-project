@@ -9,6 +9,7 @@
         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
         sftp_directories:
+        - { name: OUTBOUND, mode: 775 }
         - { name: OUTBOUND/ERROR/SUCCESS, mode: 775 }
         - { name: INBOUND, mode: 775 }
         - { name: INBOUND/ERROR, mode: 775 }
@@ -36,7 +37,7 @@
     #    home: /SFTP/File_Server_Drive/ALGORIQ/TTK_SFTP
     #    append: True
     #- sftp_directories:
-	#  - { name: OUTBOUND, mode: 775 }
+    #  - { name: OUTBOUND, mode: 775 }
     #  - imports
     #  - exports
     #  - { name: public, mode: 755 }

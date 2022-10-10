@@ -9,11 +9,11 @@
         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
         sftp_directories:
-        - { name: OUTBOUND, mode: "0775" }
-        - { name: OUTBOUND/ERROR/SUCCESS, mode: "0775" }
-        - { name: INBOUND, mode: "0775" }
-        - { name: INBOUND/ERROR, mode: "0775" }
-        - { name: ARCHIVE/DONE, mode: "0775" }
+        - { name: OUTBOUND, mode: "02775" }
+        - { name: OUTBOUND/ERROR/SUCCESS, mode: "02775" }
+        - { name: INBOUND, mode: "02775" }
+        - { name: INBOUND/ERROR, mode: "02775" }
+        - { name: ARCHIVE/DONE, mode: "02775" }
         - directory_only_for_cont1
         - directory_only_for_cont2
         group: sftpusers

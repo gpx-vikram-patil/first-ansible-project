@@ -16,17 +16,17 @@
         - { name: ARCHIVE/DONE, mode: 775 }
         - directory_only_for_cont1
         - directory_only_for_cont2
-        sftp_group_name: sftpusers
+        group: sftpusers
         home: /SFTP/File_Server_Drive/ALGORIQ/CONTINENTAL_SFTP
       - name: GPXSPTUSER
         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
-        sftp_group_name: sftpusers_readonly
+        group: sftpusers_readonly
         home: /SFTP/File_Server_Drive/ALGORIQ
       - name: BAU_SFTP_USER
         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
-        sftp_group_name: sftpusers
+        group: sftpusers
         home: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER
       
       

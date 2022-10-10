@@ -5,21 +5,42 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: user4
-        password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0" # passpass
+      - name: CONTINENTAL_SFTP_USER
+        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
-        #sftp_directories:
-        #- directory_only_for_user1
-        #- directory_only_for_peter2
-        #home: /SFTP/File_Server_Drive/ALGORIQ
-      #- name: sally
-        #password: "$1$peter$UwlTw5u1qSuSAZe.rw9Jx0"
-        #shell: False
-        #home: /var/tmp/sally
+        sftp_directories:
+        - { name: OUTBOUND, mode: 775 }
+        - { name: OUTBOUND/ERROR/SUCCESS, mode: 775 }
+        - { name: INBOUND, mode: 775 }
+        - { name: INBOUND/ERROR, mode: 775 }
+        - { name: ARCHIVE/DONE, mode: 775 }
+        - directory_only_for_cont1
+        - directory_only_for_cont2
+        sftp_group_name: sftpusers
+        home: /SFTP/File_Server_Drive/ALGORIQ/CONTINENTAL_SFTP
+      - name: GPXSPTUSER
+        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+        shell: False
+        sftp_group_name: sftpusers_readonly
+        home: /SFTP/File_Server_Drive/ALGORIQ
+      - name: BAU_SFTP_USER
+        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+        shell: False
+        sftp_group_name: sftpusers
+        home: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER
+      
+      
+
+    #  - name: TTK_SFTP_USER
+    #    password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+    #    authorized: [sally.pub]
+    #    home: /SFTP/File_Server_Drive/ALGORIQ/TTK_SFTP
+    #    append: True
     #- sftp_directories:
-      #- OUTBOUND
-      #- INBOUND
-      #- { name: public, mode: 755 }
-      #- other
+	#  - { name: OUTBOUND, mode: 775 }
+    #  - imports
+    #  - exports
+    #  - { name: public, mode: 755 }
+    #  - other
   roles:
     - sftp-server

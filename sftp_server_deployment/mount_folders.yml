@@ -9,8 +9,8 @@
   tasks:
   - name: Mount
     mount:
-        path: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER/CONTINENTAL_SFTP
-        src: /SFTP/File_Server_Drive/ALGORIQ/CONTINENTAL_SFTP
+        path: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER/AMUL_SFTP
+        src: /SFTP/File_Server_Drive/ALGORIQ/AMUL_SFTP
         opts: bind
         fstype: none
         state: mounted

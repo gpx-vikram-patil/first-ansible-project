@@ -147,6 +147,8 @@
   with_subelements:
     - "{{ _sftp_users }}"
     - "sftp_directories"
+    - flags:
+      skip_missing: True    
    
 - name: SFTP-Server | Create dev directory for logging
   file:

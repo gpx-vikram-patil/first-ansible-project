@@ -139,8 +139,8 @@
 - name: SFTP-Server | Set ACL of sftp directories per user
   acl:
     default: yes
-    path: {{ item[1].name }}
-    entity: {{ sftp_group_name }}
+    path: "{{ item[1].name }}"
+    entity: "{{ sftp_group_name }}"
     etype: group
     permissions: rwx
     state: present

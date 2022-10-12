@@ -138,7 +138,7 @@
       skip_missing: True
 
 - name: SFTP-Server | Set ACL of sftp directories per users
-  command: setfacl -Rdm g:sftpusers:rwx /SFTP/File_Server_Drive/ALGORIQ/*
+  command: "setfacl -Rdm g:sftpusers:rwx /SFTP/File_Server_Drive/ALGORIQ/*"
   ignore_errors: yes
   
   #acl:

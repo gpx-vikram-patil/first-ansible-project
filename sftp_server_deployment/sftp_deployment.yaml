@@ -5,7 +5,7 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: TTK_SFTP_USER
+      - name: KONE_SFTP_USER
         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
         sftp_directories:
@@ -18,8 +18,8 @@
         #- { name: INBOUND/ERROR/DONE, mode: "02775" }
         #- { name: ARCHIVE/DONE, mode: "02775" }
         group: sftpusers
-        home: /SFTP/File_Server_Drive/ALGORIQ/TTK_SFTP
-      - name: GPXPWRUSER
+        home: /SFTP/File_Server_Drive/ALGORIQ/KONE_SFTP
+      - name: GPXSPTUSER
         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
         shell: False
         group: sftpusers_readonly

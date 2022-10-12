@@ -137,19 +137,22 @@
     - flags:
       skip_missing: True
 
-- name: SFTP-Server | Set ACL of sftp directories per user
-  acl:
-    default: yes
-    path: "{{ item[0].home }}/{{ item[1].name }}"
-    entity: "{{ sftp_group_name }}"
-    etype: group
-    permissions: rwx
-    state: present
-  with_subelements:
-    - "{{ _sftp_users }}"
-    - "sftp_directories"
-    - flags:
-      skip_missing: True    
+- name: SFTP-Server | Set ACL of sftp directories per users
+  command: setfacl -Rdm g:sftpusers:rwx /SFTP/File_Server_Drive/ALGORIQ/*
+  ignore_errors: yes
+  
+  #acl:
+  #  default: yes
+  #  path: "{{ item[0].home }}/{{ item[1].name }}"
+  #  entity: "{{ sftp_group_name }}"
+  #  etype: group
+  #  permissions: rwx
+  #  state: present
+  #with_subelements:
+  #  - "{{ _sftp_users }}"
+  #  - "sftp_directories"
+  #  - flags:
+  #    skip_missing: True    
    
 - name: SFTP-Server | Create dev directory for logging
   file:

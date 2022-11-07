@@ -10,7 +10,10 @@
         shell: False
         sftp_directories:
         - { name: OUTBOUND }
+        - { name: OUTBOUND/ERROR }
         - { name: OUTBOUND/ERROR/SUCCESS }
+        - { name: INBOUND }
+        - { name: INBOUND/ERROR }
         - { name: INBOUND/ERROR/DONE }
         - { name: ARCHIVE/DONE }
         #- { name: OUTBOUND, mode: "02775" }

@@ -1,0 +1,7 @@
+---
+# This playbook configures automatic security updates
+
+- name: Configure security updates on all nodes
+  hosts: all
+  roles:
+    - security_updates

@@ -1,7 +1,0 @@
----
-# Defines tasks to configure automatic security updates
-
-- include: security-updates.yml
-  when: security_updates_enabled
-  tags:
-    - security

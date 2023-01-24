@@ -15,7 +15,7 @@
         fstype: none
         state: mounted
 
-  #- name: Unmount
-  #  mount:
-  #      path: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER/CONTINENTAL_SFTP
-  #      state: absent
+  - name: Unmount
+    mount:
+        path: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER/CONTINENTAL_SFTP
+        state: absent

@@ -157,7 +157,7 @@
 - name: SFTP-Server | Create dev directory for logging
   file:
     path: "{{ item.home }}/dev"
-    owner: "{{ item.name }}"
+    owner: root
     group: "{{ sftp_group_name }}"
     state: directory
     mode: 02755

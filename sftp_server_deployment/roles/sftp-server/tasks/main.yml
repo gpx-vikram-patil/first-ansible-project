@@ -18,7 +18,7 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^Subsystem(\s+)sftp'
-    line: "Subsystem sftp internal-sftp -f AUTH -l INFO"
+    line: "Subsystem sftp internal-sftp -f AUTH -l VERBOSE"
     state: present
   notify: SFTP-Server | Restart sshd
 
@@ -32,7 +32,7 @@
           AllowTCPForwarding no
           PermitTunnel no
           X11Forwarding no
-          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l INFO', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
+          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l VERBOSE', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
           PasswordAuthentication {{ sftp_allow_passwords | ternary('yes', 'no') }}
   notify: SFTP-Server | Restart sshd
   
@@ -46,7 +46,7 @@
           AllowTCPForwarding no
           PermitTunnel no
           X11Forwarding no
-          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l INFO', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
+          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l VERBOSE', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
           PasswordAuthentication {{ sftp_allow_passwords | ternary('yes', 'no') }}
   notify: SFTP-Server | Restart sshd
 
@@ -156,11 +156,10 @@
    
 - name: SFTP-Server | Create dev directory for logging
   file:
-    path: "/var/log/sftp/{{ item.name }}/dev"
+    path: "{{ item.home }}/dev"
     owner: root
     group: root
     state: directory
-    mode: 0777
   with_items:
     - "{{ _sftp_users }}"
   when: sftp_enable_logging
@@ -172,7 +171,7 @@
     block: |
       # Create an additional socket for some of the sshd chrooted users.
       {% for user in sftp_users %}
-      $AddUnixListenSocket /var/log/sftp/{{ user.name }}/dev/log
+      $AddUnixListenSocket {{ sftp_home_partition }}/{{ user.name }}/dev/log
       {% endfor %}
 
       # Log internal-sftp in a separate file

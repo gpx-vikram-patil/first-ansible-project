@@ -14,8 +14,3 @@
         opts: bind
         fstype: none
         state: mounted
-
-  - name: Unmount
-    mount:
-        path: /SFTP/File_Server_Drive/ALGORIQ/QA_USER/CARL ZEISS_SFTP
-        state: absent

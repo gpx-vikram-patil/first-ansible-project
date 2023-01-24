@@ -9,13 +9,13 @@
   tasks:
   - name: Mount
     mount:
-        path: /SFTP/File_Server_Drive/ALGORIQ/QA_USER/KONE_SFTP
-        src: /SFTP/File_Server_Drive/ALGORIQ/KONE_SFTP
+        path: /SFTP/File_Server_Drive/ALGORIQ/QA_USER/CARL ZEISS_SFTP
+        src: /SFTP/File_Server_Drive/ALGORIQ/CARL ZEISS_SFTP
         opts: bind
         fstype: none
         state: mounted
 
-  - name: Unmount
-    mount:
-        path: /SFTP/File_Server_Drive/ALGORIQ/QA_USER/KONE_SFTP
-        state: absent
+#   - name: Unmount
+#     mount:
+#         path: /SFTP/File_Server_Drive/ALGORIQ/QA_USER/CARL ZEISS_SFTP
+#         state: absent

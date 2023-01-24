@@ -160,7 +160,7 @@
     owner: root
     group: "{{ sftp_group_name }}"
     state: directory
-    mode: 02755
+    mode: 0755
   with_items:
     - "{{ _sftp_users }}"
   when: sftp_enable_logging

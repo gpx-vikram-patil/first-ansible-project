@@ -28,16 +28,16 @@
         group: sftpusers
         home: /SFTP/File_Server_Drive/ALGORIQ/CARL ZEISS_SFTP
         sftp_enable_logging: true
-#       - name: GPXSPTUSER
-#         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
-#         shell: False
-#         group: sftpusers_readonly
-#         home: /SFTP/File_Server_Drive/ALGORIQ
-#       - name: QA_SFTP_USER
-#         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
-#         shell: False
-#         group: sftpusers
-#         home: /SFTP/File_Server_Drive/ALGORIQ/QA_USER
+      - name: GPXSPTUSER
+        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+        shell: False
+        group: sftpusers
+        home: /SFTP/File_Server_Drive/ALGORIQ
+      - name: QA_SFTP_USER
+        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+        shell: False
+        group: sftpusers_readonly
+        home: /SFTP/File_Server_Drive/ALGORIQ/QA_USER
       
       
 

@@ -27,7 +27,6 @@
 #         - { name: ARCHIVE/DONE, mode: "02775" }
         group: sftpusers
         home: /SFTP/File_Server_Drive/ALGORIQ/CARL ZEISS_SFTP
-        sftp_enable_logging: true
       - name: GPXSPTUSER
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         shell: False

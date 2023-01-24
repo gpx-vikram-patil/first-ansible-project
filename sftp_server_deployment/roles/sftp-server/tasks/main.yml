@@ -18,7 +18,7 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^Subsystem(\s+)sftp'
-    line: "Subsystem sftp internal-sftp -f AUTH -l VERBOSE"
+    line: "Subsystem sftp internal-sftp -f AUTH -l INFO"
     state: present
   notify: SFTP-Server | Restart sshd
 
@@ -32,7 +32,7 @@
           AllowTCPForwarding no
           PermitTunnel no
           X11Forwarding no
-          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l VERBOSE', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
+          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l INFO', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
           PasswordAuthentication {{ sftp_allow_passwords | ternary('yes', 'no') }}
   notify: SFTP-Server | Restart sshd
   
@@ -46,7 +46,7 @@
           AllowTCPForwarding no
           PermitTunnel no
           X11Forwarding no
-          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l VERBOSE', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
+          ForceCommand internal-sftp {{ sftp_enable_logging | ternary('-l INFO', '') }} {{ (sftp_start_directory in sftp_directories or sftp_start_directory in sftp_directories | selectattr("name", "defined") | map(attribute='name') | list) | ternary('-d /' + sftp_start_directory, '') }}
           PasswordAuthentication {{ sftp_allow_passwords | ternary('yes', 'no') }}
   notify: SFTP-Server | Restart sshd
 

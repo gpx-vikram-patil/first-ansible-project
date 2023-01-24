@@ -5,33 +5,38 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: KONE_SFTP_USER
-        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+      - name: CARLZIS_SFTP_USER
+        password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         shell: False
         sftp_directories:
-        - { name: OUTBOUND }
-        - { name: OUTBOUND/ERROR }
-        - { name: OUTBOUND/ERROR/SUCCESS }
-        - { name: INBOUND }
-        - { name: INBOUND/ERROR }
-        - { name: INBOUND/ERROR/DONE }
-        - { name: ARCHIVE/DONE }
-        #- { name: OUTBOUND, mode: "02775" }
-        #- { name: OUTBOUND/ERROR/SUCCESS, mode: "02775" }
-        #- { name: INBOUND/ERROR/DONE, mode: "02775" }
-        #- { name: ARCHIVE/DONE, mode: "02775" }
+        - { name: Outbound }
+        - { name: Outbound/Error }
+        - { name: Outbound/Success }
+        - { name: Outbound/Current }
+        - { name: Inbound }
+        - { name: Inbound/Error }
+        - { name: Inbound/Current }
+        - { name: Inbound/Success }
+        - { name: Invoice PDF }
+        - { name: Invoice PDF/Error }
+        - { name: Invoice PDF/Current }
+        - { name: Invoice PDF/Success }
+#         - { name: OUTBOUND, mode: "02775" }
+#         - { name: OUTBOUND/ERROR/SUCCESS, mode: "02775" }
+#         - { name: INBOUND/ERROR/DONE, mode: "02775" }
+#         - { name: ARCHIVE/DONE, mode: "02775" }
         group: sftpusers
-        home: /SFTP/File_Server_Drive/ALGORIQ/KONE_SFTP
-      - name: GPXSPTUSER
-        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
-        shell: False
-        group: sftpusers_readonly
-        home: /SFTP/File_Server_Drive/ALGORIQ
-      - name: QA_SFTP_USER
-        password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
-        shell: False
-        group: sftpusers
-        home: /SFTP/File_Server_Drive/ALGORIQ/QA_USER
+        home: /SFTP/File_Server_Drive/ALGORIQ/CARL ZEISS_SFTP
+#       - name: GPXSPTUSER
+#         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+#         shell: False
+#         group: sftpusers_readonly
+#         home: /SFTP/File_Server_Drive/ALGORIQ
+#       - name: QA_SFTP_USER
+#         password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+#         shell: False
+#         group: sftpusers
+#         home: /SFTP/File_Server_Drive/ALGORIQ/QA_USER
       
       
 

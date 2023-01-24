@@ -17,5 +17,5 @@
 
   - name: Unmount
     mount:
-        path: /SFTP/File_Server_Drive/ALGORIQ/BAU_USER/CONTINENTAL_SFTP
+        path: /SFTP/File_Server_Drive/ALGORIQ/QA_USER/KONE_SFTP
         state: absent

@@ -7,6 +7,7 @@
     - sftp_users:
       - name: CARLZIS_SFTP_USER
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
+        authorized: [carlzeiss.pub]
         shell: False
         sftp_directories:
         - { name: Outbound }

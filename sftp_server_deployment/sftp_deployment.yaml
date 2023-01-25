@@ -5,9 +5,9 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: CARLZIS_SFTP_USER
+      - name: CARLZEISS_SFTP_USER
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
-        authorized: [carlzeiss.pub]
+#         authorized: [carlzeiss.pub]
         shell: False
         sftp_directories:
         - { name: Outbound }
@@ -27,7 +27,7 @@
 #         - { name: INBOUND/ERROR/DONE, mode: "02775" }
 #         - { name: ARCHIVE/DONE, mode: "02775" }
         group: sftpusers
-        home: /SFTP/File_Server_Drive/ALGORIQ/CARL ZEISS_SFTP
+        home: /SFTP/File_Server_Drive/ALGORIQ/CARLZEISS_SFTP
       - name: GPXSPTUSER
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         shell: False

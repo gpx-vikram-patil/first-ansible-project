@@ -154,7 +154,7 @@
   #  - flags:
   #    skip_missing: True    
    
-# - name: SFTP-Server | Create dev directory for logging
+- name: SFTP-Server | Create dev directory for logging
   file:
     path: "/var/log/sftp/{{ item.home }}/dev"
     owner: root

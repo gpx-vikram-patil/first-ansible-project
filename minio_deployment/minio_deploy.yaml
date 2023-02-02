@@ -16,8 +16,6 @@
         path: /root/minio
         mode: '777'
 
-
-
     - name: Creating a systemd file for minio service
       copy:
         dest: "/etc/systemd/system/min.service"
@@ -35,3 +33,8 @@
       shell:
         "sudo systemctl start min.service"
       ignore_errors: true
+
+    - name: Install s3fs
+      ansible.builtin.apt:
+        name: s3fs
+        state: present

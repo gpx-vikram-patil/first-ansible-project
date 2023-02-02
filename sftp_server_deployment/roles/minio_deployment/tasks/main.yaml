@@ -1,10 +1,4 @@
 ---
-- hosts: all
-  become: true
-  vars:
-    created_username: root
-
-  tasks:
     - name: Download Minio server package
       get_url:
         url: https://dl.minio.io/server/minio/release/linux-amd64/minio

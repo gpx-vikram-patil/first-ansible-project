@@ -1,0 +1,56 @@
+---
+- name: test-playbook | Test sftp-server roles
+  hosts: all
+  become: yes
+  become_user: root
+  vars:
+    - sftp_users:
+      - name: TEST_SFTP_USER
+        password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
+#         authorized: [carlzeiss.pub]
+        shell: False
+        sftp_directories:
+        - { name: Outbound }
+        - { name: Outbound/Error }
+        - { name: Outbound/Success }
+        - { name: Outbound/Current }
+        - { name: Inbound }
+        - { name: Inbound/Error }
+        - { name: Inbound/Current }
+        - { name: Inbound/Success }
+        - { name: InvoicePDF }
+        - { name: InvoicePDF/Error }
+        - { name: InvoicePDF/Current }
+        - { name: InvoicePDF/Success }
+#         - { name: OUTBOUND, mode: "02775" }
+#         - { name: OUTBOUND/ERROR/SUCCESS, mode: "02775" }
+#         - { name: INBOUND/ERROR/DONE, mode: "02775" }
+#         - { name: ARCHIVE/DONE, mode: "02775" }
+        group: sftpusers
+        home: /SFTP/File_Server_Drive/ALGORIQ/TEST_SFTP
+#       - name: GPXSPTUSR
+#         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
+#         shell: False
+#         group: sftpusers
+#         home: /SFTP/File_Server_Drive/ALGORIQ
+    #  - name: QA_SFTP_USER
+    #    password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
+    #    shell: False
+    #    group: sftpusers_readonly
+    #    home: /SFTP/File_Server_Drive/ALGORIQ/QA_USER
+      
+      
+
+    #  - name: TTK_SFTP_USER
+    #    password: "$1$salty$li5TXAa2G6oxHTDkqx3Dz/" # passpass
+    #    authorized: [sally.pub]
+    #    home: /SFTP/File_Server_Drive/ALGORIQ/TTK_SFTP
+    #    append: True
+    #- sftp_directories:
+    #  - { name: OUTBOUND, mode: 775 }
+    #  - imports
+    #  - exports
+    #  - { name: public, mode: 755 }
+    #  - other
+  roles:
+    - sftp-server

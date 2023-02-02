@@ -54,4 +54,4 @@
     #  - other
   roles:
     - sftp-server
-    - minio-deployment
+    - minio_deployment

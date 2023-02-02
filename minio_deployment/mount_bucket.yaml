@@ -23,7 +23,7 @@
 
     - name: Change permission of password file
       file:
-        path: .passwd-s3fs
+        path: /root/.passwd-s3fs
         mode: '600'
 
     - name: mount bucket with s3fs

@@ -4,7 +4,7 @@
   become: yes
   become_user: root
   vars:
-#     - sftp_users:
+     - sftp_users:
 #       - name: TEST_SFTP_USER
 #         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
 #         authorized: [carlzeiss.pub]

@@ -18,7 +18,7 @@
 
     - name: Send variables to passwd-s3fs files
       shell:
-        "echo minioadmin:minioadmin>.passwd-s3fs"
+        "echo minioadmin:minioadmin>/root/.passwd-s3fs"
       ignore_errors: true
 
     - name: Change permission of password file
@@ -28,6 +28,6 @@
 
     - name: mount bucket with s3fs
       shell:
-        "s3fs {{ BUCKETNAME }} {{ MOUNTPOINT }} -o passwd_file=.passwd-s3fs -o url={{ MINIOURL }} -o use_path_request_style -o umask=0002 -o allow_other"
+        "s3fs {{ BUCKETNAME }} {{ MOUNTPOINT }} -o passwd_file=/root/.passwd-s3fs -o url={{ MINIOURL }} -o use_path_request_style -o umask=0002 -o allow_other"
 #         "s3fs payex /root/mountpoint -o passwd_file=.passwd-s3fs -o url=http://172.18.200.140:9000 -o use_path_request_style -o umask=0002 -o allow_other"
       ignore_errors: true

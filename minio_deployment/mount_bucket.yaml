@@ -3,12 +3,6 @@
   become: true
   vars:
     created_username: root
-
-  tasks:
-    - name: Install apache httpd  (state=present is optional)
-      ansible.builtin.apt:
-        name: s3fs
-        state: present
     
     - name: Create directory if it does not exist
       file:

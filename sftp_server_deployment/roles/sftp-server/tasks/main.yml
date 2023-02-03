@@ -65,6 +65,7 @@
     #groups: "{{ sftp_group_name }}"
     #append: "{{ item.append | default(False) }}"
     home: "{{ item.home }}"
+    uid: "{{ item.uid }}"
     # `None` means default value -> default is to have a shell
     shell: "{{ None if (item.shell | default(True)) else sftp_nologin_shell }}"
     skeleton: "{{ item.skeleton | default(omit) }}"

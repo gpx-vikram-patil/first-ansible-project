@@ -9,7 +9,6 @@
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         authorized: [carlzeiss.pub]
         shell: False
-        uid: 1100
         sftp_directories:
         - { name: Outbound }
         - { name: Outbound/Error }

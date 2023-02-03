@@ -5,7 +5,7 @@
   become_user: root
   vars:
     - sftp_users:
-      - name: JPMC_SFTP_USER
+      - name: JPMC_SFTP_USERP
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         authorized: [carlzeiss.pub]
         shell: False
@@ -27,7 +27,7 @@
 #         - { name: INBOUND/ERROR/DONE, mode: "02775" }         
 #         - { name: ARCHIVE/DONE, mode: "02775" }
         group: sftpusers
-        home: /minio/JPMC_SFTP
+        home: /minio/JPMC_SFTPP
       - name: GPXSPTUSR
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         shell: False

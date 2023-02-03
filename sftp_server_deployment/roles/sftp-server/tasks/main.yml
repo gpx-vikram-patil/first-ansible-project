@@ -84,14 +84,14 @@
 #     group: "{{ sftp_group_name }}"
 #     owner: root
 
-- name: SFTP-Server | Correct ownership and permission of home directories
-  file:
-    path: "{{ item.home }}"
-    owner: root
-    group: sftpusers
-    #group: "{{ item.group | default(sftp_group_name) }}"
-    mode: "{{ item.mode | default('02755') }}"
-  with_items: "{{ _sftp_users }}"
+# - name: SFTP-Server | Correct ownership and permission of home directories
+#   file:
+#     path: "{{ item.home }}"
+#     owner: root
+#     group: sftpusers
+#     #group: "{{ item.group | default(sftp_group_name) }}"
+#     mode: "{{ item.mode | default('02755') }}"
+#   with_items: "{{ _sftp_users }}"
 
 # Install all relevant public keys.
 - name: SFTP-Server | Install public keys

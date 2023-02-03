@@ -4,6 +4,7 @@
   vars:
     created_username: root
     
+  tasks:  
     - name: Create directory if it does not exist
       file:
         path: '{{ MOUNTPOINT }}'

@@ -1,5 +1,5 @@
 ---
-sftp_home_partition: /SFTP/File_Server_Drive/ALGORIQ
+sftp_home_partition: /minio
 sftp_group_name: sftpusers
 sftp_directories: []
 sftp_start_directory: ''

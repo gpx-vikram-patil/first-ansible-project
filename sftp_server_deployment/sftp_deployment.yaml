@@ -26,8 +26,8 @@
 #         - { name: OUTBOUND/ERROR/SUCCESS, mode: "02775" }
 #         - { name: INBOUND/ERROR/DONE, mode: "02775" }         
 #         - { name: ARCHIVE/DONE, mode: "02775" }
-         group: sftpusers
-         home: /SFTP/File_Server_Drive/ALGORIQ/TEST_SFTP
+        group: sftpusers
+        home: /SFTP/File_Server_Drive/ALGORIQ/TEST_SFTP
 #       - name: GPXSPTUSR
 #         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
 #         shell: False

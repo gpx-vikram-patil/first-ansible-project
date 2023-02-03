@@ -31,7 +31,7 @@
       - name: GPXSPTUSR
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         shell: False
-        group: sftpusers_readonly
+        group: sftpusers
         home: /SFTP/File_Server_Drive/ALGORIQ/GPXSPTUSR
     #  - name: QA_SFTP_USER
     #    password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123

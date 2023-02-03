@@ -27,12 +27,12 @@
 #         - { name: INBOUND/ERROR/DONE, mode: "02775" }         
 #         - { name: ARCHIVE/DONE, mode: "02775" }
         group: sftpusers
-        home: /SFTP/File_Server_Drive/ALGORIQ/JPMC_SFTP
+        home: /minio/JPMC_SFTP
       - name: GPXSPTUSR
         password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
         shell: False
-        group: sftpusers
-        home: /SFTP/File_Server_Drive/ALGORIQ/GPXSPTUSR
+        group: sftpusers_readonly
+        home: /minio/GPXSPTUSR
     #  - name: QA_SFTP_USER
     #    password: "$1$3L0MgTQZ$9omfvFQ3avSwE1BQFZfXb0" # Freepay@123
     #    shell: False

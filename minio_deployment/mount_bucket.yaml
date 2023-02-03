@@ -9,7 +9,9 @@
       file:
         path: '{{ MOUNTPOINT }}'
         state: directory
-        mode: '0755'
+        owner: root
+        group: sftpusers
+        mode: '02755'
 
     - name: Send variables to passwd-s3fs files
       shell:

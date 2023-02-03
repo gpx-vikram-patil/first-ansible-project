@@ -88,7 +88,7 @@
   file:
     path: "{{ item.home }}"
     owner: root
-    group: sftpusers
+    group: root
     #group: "{{ item.group | default(sftp_group_name) }}"
     mode: "{{ item.mode | default('0755') }}"
   with_items: "{{ _sftp_users }}"

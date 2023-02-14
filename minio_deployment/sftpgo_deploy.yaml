@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  
+- name: Add SFTPGo PPA repository
+  apt_repository:
+    repo: "ppa:sftpgo/sftpgo"
+    update_cache: true
+
+- name: Install SFTPGo
+  apt:
+    name: "sftpgo"
+    state: present

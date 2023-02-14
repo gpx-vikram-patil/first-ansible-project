@@ -5,7 +5,7 @@
   apt_repository:
     repo: "ppa:sftpgo/sftpgo"
     update_cache: true
-	
+
 - name: Update apt packages
   become: true
   apt:

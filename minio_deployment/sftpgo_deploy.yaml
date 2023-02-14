@@ -1,5 +1,5 @@
 - hosts: all
-  become: true
+  become: yes
   
 - name: Add SFTPGo PPA repository
   apt_repository:
@@ -10,4 +10,3 @@
   apt:
     name: "sftpgo"
     state: present
-    
